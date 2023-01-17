@@ -24,3 +24,6 @@ st.subheader("Contratos agrupados por órgano gestor")
 st.write('En primer lugar, vamos a ver la distribución de los contratos por órgano gestor. Para ello, vamos a agrupar los contratos por órgano gestor y vamos a mostrar el número de contratos y el importe total de cada uno de ellos.')
 #st.write(minor_contracts_df.groupby('organo_gestor').agg({'importe': 'sum', 'id': 'count'}).rename(columns={'id': 'contratos'}).sort_values('contratos', ascending=False))
 
+st.metric(label="Num. Contratos", value=minor_contracts_df['id'].count())
+
+st.plotly_chart(px.bar(minor_contracts_df.groupby('organo_gestor').agg({'importe': 'sum', 'id': 'count'}).rename(columns={'id': 'contratos'}).sort_values('contratos', ascending=False), y='contratos', title='Contratos por órgano gestor'))
