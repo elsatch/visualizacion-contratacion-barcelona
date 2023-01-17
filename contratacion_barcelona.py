@@ -4,9 +4,10 @@ import pandas as pd
 import numpy as np
 from streamlit_extras.switch_page_button import switch_page
 
-st.title("Visualización Contratación en Barcelona (2017-2022")
+st.title("Contratación en Barcelona (2017-2022")
+st.subheader("Visualización de datos abiertos de contratación en Barcelona")
 
-minor_contracts = "minor_contracts_2017_2022.csv"
+minor_contracts = "data/minor_contracts_2017_2022.csv"
 
 @st.cache
 def load_data(file):
