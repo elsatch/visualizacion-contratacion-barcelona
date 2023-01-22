@@ -7,23 +7,24 @@ from streamlit_extras.switch_page_button import switch_page
 st.title("Contratación en Barcelona (2017-2022")
 st.subheader("Visualización de datos abiertos de contratación en Barcelona")
 
-minor_contracts = "data/minor_contracts_2017_2022.csv"
+df_file = "data/yearly_report_bcn_2020_2021.csv"
 
 @st.cache
 def load_data(file):
     df = pd.read_csv(file, index_col=0)
     return df
 
-minor_contracts_df = load_data(minor_contracts)
+df = load_data(df_file)
 
 st.write('Esta aplicación visualiza información sobre contratación en Barcelona, a partir de los conjuntos de datos abiertos municipales. En concreto, vamos a explorar los datos correspondientes a los años 2017-2022.')
 st.write('Nótese que debido a la fecha en la que se han generado estas visualizaciones, todavía no se han publicado los datos del último triemstre de 2022.')
 
-st.subheader("Contratos agrupados por órgano gestor")
+st.subheader("Contratos anuales del Ayuntamiento de Barcelona")
 
-st.write('En primer lugar, vamos a ver la distribución de los contratos por órgano gestor. Para ello, vamos a agrupar los contratos por órgano gestor y vamos a mostrar el número de contratos y el importe total de cada uno de ellos.')
+st.write('En primer lugar, vamos a ver cuántos contratos se han realizado en Barcelona en los años 2020 y 2021')
 #st.write(minor_contracts_df.groupby('organo_gestor').agg({'importe': 'sum', 'id': 'count'}).rename(columns={'id': 'contratos'}).sort_values('contratos', ascending=False))
 
-st.metric(label="Num. Contratos", value=minor_contracts_df['id'].count())
+st.metric(label="Num. Contratos 2021", value=df[df['any'] == '2021'].count())
+st.metric(label="Num. Contratos 2020", value=df[df['any'] == '2020'].count())
 
-st.plotly_chart(px.bar(minor_contracts_df.groupby('organo_gestor').agg({'importe': 'sum', 'id': 'count'}).rename(columns={'id': 'contratos'}).sort_values('contratos', ascending=False), y='contratos', title='Contratos por órgano gestor'))
+st.plotly_chart(px.histogram(df, x='any', title='Número de contratos por año'))
