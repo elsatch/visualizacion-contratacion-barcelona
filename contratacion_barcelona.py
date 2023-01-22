@@ -7,11 +7,11 @@ from streamlit_extras.switch_page_button import switch_page
 st.title("Contratación en Barcelona (2017-2022")
 st.subheader("Visualización de datos abiertos de contratación en Barcelona")
 
-df_file = "data/yearly_report_bc_2020_2021.csv"
+df_file = "data/yearly_report_bcn_2020_2021.csv"
 
 @st.cache
 def load_data(file):
-    df = pd.read_csv(file, index_col=0)
+    df = pd.read_csv(file)
     return df
 
 df = load_data(df_file)
