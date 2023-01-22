@@ -24,7 +24,8 @@ st.subheader("Contratos anuales del Ayuntamiento de Barcelona")
 st.write('En primer lugar, vamos a ver cuántos contratos se han realizado en Barcelona en los años 2020 y 2021')
 #st.write(minor_contracts_df.groupby('organo_gestor').agg({'importe': 'sum', 'id': 'count'}).rename(columns={'id': 'contratos'}).sort_values('contratos', ascending=False))
 
-st.write(df)
+st.write(df.info())
+st.write(df.head())
 st.metric(label="Num. Contratos 2021", value=df[df['any'] == '2021'].count())
 st.metric(label="Num. Contratos 2020", value=df[df['any'] == '2020'].count())
 
