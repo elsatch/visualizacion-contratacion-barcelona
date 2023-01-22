@@ -26,7 +26,7 @@ st.write('En primer lugar, vamos a ver cuántos contratos se han realizado en Ba
 
 st.write(df.info())
 st.write(df.head())
-st.metric(label="Num. Contratos 2021", value=df[df['any'] == '2021'].count())
-st.metric(label="Num. Contratos 2020", value=df[df['any'] == '2020'].count())
+st.metric(label="Num. Contratos 2021", value=df[df['año'] == '2021'].count())
+st.metric(label="Num. Contratos 2020", value=df[df['año'] == '2020'].count())
 
-st.plotly_chart(px.histogram(df, x='any', title='Número de contratos por año'))
+st.plotly_chart(px.histogram(df, x='año', title='Número de contratos por año'))
