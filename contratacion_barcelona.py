@@ -24,6 +24,8 @@ st.write('La contratación pública es el conjunto de procedimientos que se llev
 st.write('El Ayuntamiento de Barcelona está organzado internamente en una serie de gerencias y distritos. Las gerencias son áreas transversales, mientras que los distritos son áreas geográficas. En el siguiente gráfico, podemos ver la estructura de la organización')
 
 bcn_structure = df[["Tipo_entidad", "Nombre_entidad"]].drop_duplicates()
+#bcn_structure = bcn_structure.groupby("Tipo_entidad").agg({"Nombre_entidad": "unique"}).reset_index()
+bcn_structure = bcn_structure.groupby("Tipo_entidad")
 json_bcn_structure = bcn_structure.to_json(orient="records")
 
 st.json(json_bcn_structure)
