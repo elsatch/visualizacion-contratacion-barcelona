@@ -20,4 +20,4 @@ st.subheader("Visualización de datos abiertos de contratación en Barcelona")
 st.write("En esta página vamos a ver poder explorar en mas detallos los datos de los contratistas del Ayuntamiento de Barcelona en 2021.")
 
 # Dibujamos un treemap con los datos de los contratistas extendidos
-st.plotly_chart(px.treemap(df, path=['tipus_contractes','nom_adjudicatari'], values='total_import_iva_inclos', color='total_import_iva_inclos', color_continuous_scale='RdBu', title='Analisis extendido de los contratistas por tipo de contrato e importe total'))
+st.plotly_chart(px.treemap(df, path=['tipus_contractes','nom_adjudicatari'], values='import_adjudicacio_iva', color='import_adjudicacio_iva', color_continuous_scale='RdBu', title='Analisis extendido de los contratistas por tipo de contrato e importe total'))
