@@ -14,4 +14,4 @@ st.write("En la práctica, este tipo de contratos requiere de publicidad y un pr
 st.subheader("Tipos de contratos en el Ayuntamiento de Barcelona 2021")
 
 st.write('En la siguiente gráfica vamos a ver el número de contratos realizados, agrupados por tipo')
-st.plotly_chart(px.bar(df, x="Tipo", y="Número de contratos", color="Tipo", title="Número de contratos por tipo"))
+st.plotly_chart(px.bar(df, x="Tipo de contrato", y="Número", color="Tipo de contrato", title="Número de contratos por tipo"))
