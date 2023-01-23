@@ -21,6 +21,8 @@ st.write("En esta página vamos a ver las modificaciones de los contratos realiz
 st.write("En el año 2021 el número de contratos que se han modificado es de:")
 
 st.metric(label="Número de contratos modificados", value=len(mc.index))
+st.metric(label="Suma de los imporrtes de los de contratos modificados", value=mc['import_modificacio_sense_iva'].sum())
+
 
 st.subheader("¿Cuánto se ha modificado el presupuesto de los contratos modificados?")
 st.write("Una de las cosas que se podría asumir es que todos los contratos modificados han incrementado su presupuesto con esta modificación, pero si nos fijamos en los datos, observaremos que esto no es siempre así.")
@@ -37,9 +39,11 @@ st.write('Vamos a revisar los totales:')
 #col3.metric("Aumento de importe", mc[mc['variaciò'] > 0].count())
 
 st.subheader("¿Qué tipos de contratos sufren más modificaciones?")
-st.write("En esta gráfica podemos cuáles son tipos de los que más modificaciones sufren en función del número de modificaciones")
+st.write("En esta gráfica podemos cuáles son los tipos de contrato que más modificaciones sufren en función del número de modificaciones")
 
-st.plotly_chart(px.histogram(mc, x="tipus_de_contracte_obres_serveis_subministraments", title="Tipos de contratos modificados"))
+st.plotly_chart(px.histogram(mc, x="tipus_de_contracte_obres_serveis_subministraments", title="Numero de contratos modificados por tipo de contrato"))
 
 st.write("Vamos a verificar ahora si los mayores cambios de importes se corresponden a obras o a otro tipo de contratos.")
-st.plotly_chart(px.histogram(mc, x="tipus_de_contracte_obres_serveis_subministraments", y="import_modificacio_sense_iva", title="Tipos de contratos modificados"))
+st.plotly_chart(px.histogram(mc, x="tipus_de_contracte_obres_serveis_subministraments", y="import_modificacio_sense_iva", title="Importe de las modificaciones por Tipos de contratos"))
+
+st,write("A diferencia de lo que habíamos asumido, los contatos de servicio son los que más modificaciones sufren y los que más importe tienen. Aún así, comprobamos que el importe total de la modificaciones es mínimo respecto al total")
