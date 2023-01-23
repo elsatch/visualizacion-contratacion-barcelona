@@ -9,7 +9,7 @@ from streamlit_echarts import st_echarts
 st.title("Contratación en Barcelona (2020-2021")
 st.subheader("Visualización de datos abiertos de contratación en Barcelona")
 
-df_file = "data/yearly_report_021.csv"
+df_file = "data/yearly_report_bcn_2021.csv"
 
 @st.cache
 def load_data(file):
