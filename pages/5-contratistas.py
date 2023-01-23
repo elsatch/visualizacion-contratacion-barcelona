@@ -29,7 +29,10 @@ st.write('A continuación se muestran los 10 contratistas que han conseguido may
 contractors_top10_importe = contractors.sort_values(by='total_import_iva_inclos', ascending=False).head(10)
 
 # Visualizamos los top 10 de contratistas en un gráfico de barras horizontal, mostrando el nombre del contratista y el importe total de contratos. Usamos plotly express para crear el gráfico.
-st.plotly_chart(px.bar(contractors_top10_importe, x='total_import_iva_inclos', y='nom_adjudicatari', orientation='h', title='Top 10 de contratistas por importe total de contratos'))
+fig_top10_importe = px.bar(contractors_top10_importe, x='total_import_iva_inclos', y='nom_adjudicatari', orientation='h', title='Top 10 de contratistas por importe total de contratos')
+fig_top10_importe.update_layout(barmode='stack', xaxis={'categoryorder':'total descending'})
+
+st.plotly_chart(fig_top10_importe)
 
 st.subheader('¿Qué contratistas han conseguido más contratos?')
 
