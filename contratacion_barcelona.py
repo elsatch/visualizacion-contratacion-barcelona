@@ -24,6 +24,7 @@ st.write('La contratación pública es el conjunto de procedimientos que se llev
 st.write('El Ayuntamiento de Barcelona está organzado internamente en una serie de gerencias y distritos. Las gerencias son áreas transversales, mientras que los distritos son áreas geográficas. En el siguiente gráfico, podemos ver la estructura de la organización')
 
 bcn_structure = df[["Tipo_entidad", "Nombre_entidad"]].drop_duplicates()
+json_bcn_structure = bcn_structure.to_json(orient="records")
 
 # Instalamos streamlit_echarts con pip install streamlit_echarts
 # Ejemplo de Tree Chart inspirado en https://discuss.streamlit.io/t/unreadable-tree-charts-cannot-widen-the-canvas-size-in-streamlit/5600 con datos propios
@@ -32,7 +33,7 @@ opts = {
     "series": [
         {
             "type": "tree",
-            "data": [bcn_structure],
+            "data": [json_bcn_structure],
             "top": "1%",
             "left": "7%",
             "bottom": "1%",
