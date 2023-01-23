@@ -33,4 +33,5 @@ st.write('Podemos comprobar que aunque el número de contratos menores es mayor,
 st.subheader("Tipos de contratos en el Ayuntamiento de Barcelona 2021")
 st.write('Otra forma importante de organizar los contratos tiene que ver con el tipo de contrato. Estos pueden ser de suministro, servicios o obras, etc.')
 st.write('A continuación vamos a ver cuales son los tipos de contrato que han gestionado mayor importe en el Ayuntamiento de Barcelona en 2021')
-st.plotly_chart(px.bar(df, x="Tipo de contrato", y="Importe", color="Tipo de contrato", title="Importe de contratos por tipo", text="Importe", text_auto='.2f'))
+
+st.plotly_chart(px.bar(df, x="Tipo de contrato", y="Importe", color="Tipo de contrato", title="Importe de contratos por tipo", text="Importe"))
