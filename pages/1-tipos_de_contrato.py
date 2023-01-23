@@ -21,9 +21,12 @@ st.write("La administración pública dispone de múltiples mecanismos para cont
 st.write("En la práctica, este tipo de contratos requiere de publicidad y un proceso de licitación entre las distintas ofertas, lo que hace el proceso bastante largo. Por ello la ley establece la existencia de **contratos menores**, con importe limitado, que pueden adjudicarse a la mejor de tres ofertas. El importe de estos contratos es limitado y el límite varía en función de si son suministros, servicios y obras.")
 
 st.subheader("Tipos de contratos en el Ayuntamiento de Barcelona 2021")
-
 st.write('En la siguiente gráfica vamos a ver el número de contratos realizados, agrupados por tipo')
-st.plotly_chart(px.bar(df, x="Procedimiento", y="Número", color="Procedimiento", title="Número de contratos por procedimiento"))
+
+# Personalizamos el formato de las gráficas para que se vean mejor
+fig = px.bar(df, x="Procedimiento", y="Número", color="Procedimiento", title="Número de contratos por procedimiento")
+fig.update_traces(texttemplate='%{text:.2s}', textposition='outside', textangle=45)
+st.plotly_chart(fig, height=480)
 
 st.write('En la siguiente gráfica vamos a ver importe de los contratos realizados, agrupados por procedimiento')
 st.plotly_chart(px.bar(df, x="Procedimiento", y="Importe", color="Procedimiento", title="Número de contratos por tipo"))
