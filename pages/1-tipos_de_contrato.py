@@ -33,7 +33,7 @@ st.write('En la siguiente gráfica vamos a ver el número de contratos realizado
 # fig = px.bar(df, x="Procedimiento", y="Número", color="Procedimiento", title="Número de contratos por procedimiento")
 
 #st.plotly_chart(px.bar(df, x="Procedimiento", y="Número", color="Procedimiento", title="Número de contratos por procedimiento"))
-st.plotly_chart(fig1, height=800)
+st.plotly_chart(fig1, width=800, height=1024)
 
 st.write('En la siguiente gráfica vamos a ver importe de los contratos realizados, agrupados por procedimiento')
 st.plotly_chart(px.bar(df, x="Procedimiento", y="Importe", color="Procedimiento", title="Número de contratos por tipo"))
