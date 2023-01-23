@@ -6,7 +6,7 @@ import json
 from streamlit_extras.switch_page_button import switch_page
 from streamlit_echarts import st_echarts
 
-st.title("Contratación en Barcelona (2020-2021")
+st.title("Contratación en Barcelona (2021)")
 st.subheader("Visualización de datos abiertos de contratación en Barcelona")
 
 df_file = "data/yearly_report_bcn_2021.csv"
@@ -43,7 +43,7 @@ st.plotly_chart(px.sunburst(bcn_structure, path=['Tipo_entidad', 'Nombre_entidad
 
 st.subheader("Importe de los Contratos")
 
-st.write('En primer lugar, vamos a ver explorar el importe total de los contra que se han realizado en Barcelona en los años 2021')
+st.write('En primer lugar, vamos a ver explorar el importe total de los contra que se han realizado en Barcelona en el años 2021')
 #st.write(minor_contracts_df.groupby('organo_gestor').agg({'importe': 'sum', 'id': 'count'}).rename(columns={'id': 'contratos'}).sort_values('contratos', ascending=False))
 
 importe_total = df['Importe'].sum()
