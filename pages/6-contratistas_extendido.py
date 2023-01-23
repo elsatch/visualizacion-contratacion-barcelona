@@ -10,9 +10,10 @@ df_file = "data/contractor_ext_companies_2021.csv"
 @st.cache
 def load_data(file):
     df = pd.read_csv(file)
+    df = df.dropna()
     return df
 
-df = load_data(df_file)
+contractors_ext_df = load_data(df_file)
 
 st.title("Analisis extendido de contratistas del Ayuntamiento de Barcelona")
 st.subheader("Visualización de datos abiertos de contratación en Barcelona")
@@ -20,4 +21,4 @@ st.subheader("Visualización de datos abiertos de contratación en Barcelona")
 st.write("En esta página vamos a ver poder explorar en mas detallos los datos de los contratistas del Ayuntamiento de Barcelona en 2021.")
 
 # Dibujamos un treemap con los datos de los contratistas extendidos
-st.plotly_chart(px.treemap(df, path=['tipus_contractes','nom_adjudicatari'], values='import_adjudicacio_iva', color='import_adjudicacio_iva', color_continuous_scale='RdBu', title='Analisis extendido de los contratistas por tipo de contrato e importe total'))
+st.plotly_chart(px.treemap(contractors_ext_df, path=['tipus_contractes','nom_adjudicatari'], values='import_adjudicacio_iva', color='import_adjudicacio_iva', color_continuous_scale='RdBu', title='Analisis extendido de los contratistas por tipo de contrato e importe total'))
