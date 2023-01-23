@@ -27,13 +27,14 @@ st.write("Una de las cosas que se podría asumir es que todos los contratos modi
 
 st.plotly_chart(px.histogram(mc, x="variaciò", title="Variación presupuesto de los contratos modificados"))
 
-st.write('Si observamos esta gráfica vemos que la mayor parte de los contratos modificados no han variado su importe o lo han hecho mínimamente. En cuanto a los valores más elevados, vemos que hay más reducciones de precio que aumento de los mismos. Vamos a revisar los totales:')
+st.write('Si observamos esta gráfica vemos que la mayor parte de los contratos modificados no han variado su importe o lo han hecho mínimamente. En cuanto a los valores más elevados, vemos que hay más reducciones de precio que aumento de los mismos.')
+st.write('Vamos a revisar los totales:')
 
-col1, col2, col3 = st.columns(3)
+#col1, col2, col3 = st.columns(3)
 # contratos que han reducido su importe (variaciò < 0)
-col1.metric("Reducción de importe", mc[mc['variaciò'] < 0].count())
-col2.metric("Sin cambio de importe", mc[mc['variaciò'] == 0].count())
-col3.metric("Aumento de importe", mc[mc['variaciò'] > 0].count())
+#col1.metric("Reducción de importe", mc[mc['variaciò'] < 0].count())
+#col2.metric("Sin cambio de importe", mc[mc['variaciò'] == 0].count())
+#col3.metric("Aumento de importe", mc[mc['variaciò'] > 0].count())
 
 st.subheader("¿Qué tipos de contratos sufren más modificaciones?")
 st.write("En esta gráfica podemos cuáles son tipos de los que más modificaciones sufren en función del número de modificaciones")
