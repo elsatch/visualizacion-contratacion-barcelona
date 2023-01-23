@@ -14,7 +14,7 @@ def load_data(file):
 
 df = load_data(df_file)
 
-st.title("Tipos de contratos públicos")
+st.title("Tipos de procedimientos de contratos públicos")
 st.subheader("Visualización de datos abiertos de contratación en Barcelona")
 
 st.write("La administración pública dispone de múltiples mecanismos para contratar bienes y servicios. Idealmente, los contratos públicos deberían ser transparentes y accesibles para todo tipo de entidades. **Este tipo de contratos se denominan abiertos**, ya que están abiertos a que cualquier entidad, que cumpla las debidas garantías, pueda presentar una oferta para la adjudicación del contrato.")
@@ -23,4 +23,12 @@ st.write("En la práctica, este tipo de contratos requiere de publicidad y un pr
 st.subheader("Tipos de contratos en el Ayuntamiento de Barcelona 2021")
 
 st.write('En la siguiente gráfica vamos a ver el número de contratos realizados, agrupados por tipo')
-st.plotly_chart(px.bar(df, x="Tipo de contrato", y="Número", color="Tipo de contrato", title="Número de contratos por tipo"))
+st.plotly_chart(px.bar(df, x="Procedimiento", y="Número", color="Procedimiento", title="Número de contratos por procedimiento"))
+
+st.write('En la siguiente gráfica vamos a ver importe de los contratos realizados, agrupados por procedimiento')
+st.plotly_chart(px.bar(df, x="Procedimiento", y="Número", color="Procedimiento", title="Número de contratos por tipo"))
+
+st.subheader("Tipos de contratos en el Ayuntamiento de Barcelona 2021")
+st.write('Otra forma importante de organizar los contratos tiene que ver con el tipo de contrato. Estos pueden ser de suministro, servicios o obras, etc.')
+st.write('A continuación vamos a ver cuales son los tipos de contrato que han gestionado mayor importe en el Ayuntamiento de Barcelona en 2021')
+st.plotly_chart(px.bar(df, x="Tipo de contrato", y="Importe", color="Tipo de contrato", title="Importe de contratos por tipo"))
