@@ -1,6 +1,9 @@
 import streamlit as st
-import pandas
 import plotly.express as px
+import pandas as pd
+import numpy as np
+import json
+from streamlit_extras.switch_page_button import switch_page
 
 st.title("Tipos de contratos públicos")
 st.subheader("Visualización de datos abiertos de contratación en Barcelona")

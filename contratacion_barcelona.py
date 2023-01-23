@@ -59,4 +59,6 @@ st.write('Dado que estamos explorando los distintos contratos te aniamos a explo
 st.plotly_chart(px.treemap(df, path=['Tipo_entidad', 'Nombre_entidad'], values='Importe', color='Importe', color_continuous_scale='RdBu', title='Contratos realizados por el Ayuntamiento de Barcelona en 2021'))
 
 st.subheader("¡Continuamos!")
-st.write('Ahora que hemos visto cómo se distribuyen los importes es hora de aprender más sobre estos contratos. Para ello, puedes seleccionar en el menu desplegable de la izquierda "tipos de contratos"')
+st.write('Ahora que hemos visto cómo se distribuyen los importes es hora de aprender más sobre estos contratos. Para ello, puedes pasar a la siguiente página')
+
+switch_page('Tipos de contrato')
