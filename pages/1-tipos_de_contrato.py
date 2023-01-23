@@ -16,6 +16,7 @@ df = load_data(df_file)
 
 fig = px.bar(df, x="Procedimiento", y="Número", color="Procedimiento", title="Número de contratos por procedimiento")
 fig.update_traces(texttemplate='%{text:.2s}', textposition='outside', textangle=45)
+fig.update_layout(barmode='group', xaxis_tickangle=-45)
 
 st.title("Procedimientos y tipos de procedimientos de contratos públicos")
 st.subheader("Visualización de datos abiertos de contratación en Barcelona")
@@ -28,7 +29,6 @@ st.write('En la siguiente gráfica vamos a ver el número de contratos realizado
 
 # Personalizamos el formato de las gráficas para que se vean mejor
 # fig = px.bar(df, x="Procedimiento", y="Número", color="Procedimiento", title="Número de contratos por procedimiento")
-# fig.update_layout(barmode='group', xaxis_tickangle=-45)
 
 st.plotly_chart(px.bar(df, x="Procedimiento", y="Número", color="Procedimiento", title="Número de contratos por procedimiento"))
 
