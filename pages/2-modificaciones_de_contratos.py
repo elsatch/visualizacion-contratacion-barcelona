@@ -21,7 +21,9 @@ st.write("En esta página vamos a ver las modificaciones de los contratos realiz
 st.write("En el año 2021 el número de contratos que se han modificado es de:")
 
 st.metric(label="Número de contratos modificados", value=len(mc.index))
-st.metric(label="Suma de los imporrtes de los de contratos modificados", value=mc['import_modificacio_sense_iva'].sum())
+st.metric(label="Suma de los imporrtes de los de contratos modificados", value=round(mc['import_modificacio_sense_iva'].sum(),2))
+
+# Suma total de los importes de los contratos modificados, redondeada a 2 decimales con separadores de miles
 
 
 st.subheader("¿Cuánto se ha modificado el presupuesto de los contratos modificados?")
