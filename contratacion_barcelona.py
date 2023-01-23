@@ -29,10 +29,14 @@ st.write('El Ayuntamiento de Barcelona está organzado internamente en una serie
 
 df["Nombre_entidad"] = df["Nombre_entidad"].str.upper()
 df["Tipo_entidad"] = df["Tipo_entidad"].str.upper()
-bcn_structure = df[["Tipo_entidad", "Nombre_entidad"]].drop_duplicates()
+
+# Para no variar, los nombres no coinciden entre los años, así que salen multitud de duplicados
+# Extraemos la estructura de entidades del Ayuntamiento de Barcelona del año 2020
+
+bcn_structure = df[df['año'] == 2020][['Tipo_entidad', 'Nombre_entidad']].drop_duplicates()
 
 # Creamos una visualización tipo sunburst de plotly
-st.plotly_chart(px.sunburst(bcn_structure, path=['Tipo_entidad', 'Nombre_entidad'], title='Estructura del Ayuntamiento de Barcelona'))
+st.plotly_chart(px.sunburst(bcn_structure, path=['Tipo_entidad', 'Nombre_entidad'], title='Entidades del Ayuntamiento de Barcelona con capacidad de contratar'))
 
 st.subheader("Contratos anuales del Ayuntamiento de Barcelona")
 
