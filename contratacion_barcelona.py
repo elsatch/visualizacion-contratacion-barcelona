@@ -15,7 +15,7 @@ df_file = "data/yearly_report_bcn_2021.csv"
 def load_data(file):
     df = pd.read_csv(file)
     df= df.dropna()
-    df= df[df['Import'] > 0]
+    df= df[df['Importe'] > 0]
     return df
 
 df = load_data(df_file)
