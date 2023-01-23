@@ -34,3 +34,11 @@ col1, col2, col3 = st.columns(2)
 col1.metric("Reducción de importe", mc[mc['variaciò'] < 0].count())
 col2.metric("Sin cambio de importe", mc[mc['variaciò'] == 0].count())
 col3.metric("Aumento de importe", mc[mc['variaciò'] > 0].count())
+
+st.subheader("¿Qué tipos de contratos sufren más modificaciones?")
+st.write("En esta gráfica podemos cuáles son tipos de los que más modificaciones sufren en función del número de modificaciones")
+
+st.plotly_chart(px.histogram(mc, x="tipus_de_contracte_obres_serveis_subministraments", title="Tipos de contratos modificados"))
+
+st.write("Vamos a verificar ahora si los mayores cambios de importes se corresponden a obras o a otro tipo de contratos.")
+st.plotly_chart(px.histogram(mc, x="tipus_de_contracte_obres_serveis_subministraments", y="import_modificacio_sense_iva", title="Tipos de contratos modificados"))
