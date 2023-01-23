@@ -11,6 +11,8 @@ df_file = "data/contractor_ext_companies_2021.csv"
 def load_data(file):
     df = pd.read_csv(file)
     df = df.dropna()
+    # Filtramos las filas con importe cero
+    df = df[df['import_adjudicacio_iva'] > 0]
     return df
 
 contractors_ext_df = load_data(df_file)
