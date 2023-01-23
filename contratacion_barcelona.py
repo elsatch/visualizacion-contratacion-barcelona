@@ -2,6 +2,7 @@ import streamlit as st
 import plotly.express as px
 import pandas as pd
 import numpy as np
+import json
 from streamlit_extras.switch_page_button import switch_page
 from streamlit_echarts import st_echarts
 
@@ -26,7 +27,12 @@ st.write('El Ayuntamiento de Barcelona está organzado internamente en una serie
 bcn_structure = df[["Tipo_entidad", "Nombre_entidad"]].drop_duplicates()
 #bcn_structure = bcn_structure.groupby("Tipo_entidad").agg({"Nombre_entidad": "unique"}).reset_index()
 bcn_structure = bcn_structure.groupby("Tipo_entidad")
-json_bcn_structure = bcn_structure.to_json(orient="records")
+tree_bcn_structure = {}
+for tipo_entidad, group in bcn_structure:
+    tree_bcn_structure[tipo_entidad] = group["Nombre_entidad"].tolist()
+
+json_bcn_structure = json.dumps(tree_bcn_structure)
+#json_bcn_structure = bcn_structure.to_json(orient="records")
 
 st.json(json_bcn_structure)
 
