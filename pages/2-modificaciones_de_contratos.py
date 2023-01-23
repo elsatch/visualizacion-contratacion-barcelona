@@ -26,3 +26,11 @@ st.subheader("¿Cuánto se ha modificado el presupuesto de los contratos modific
 st.write("Una de las cosas que se podría asumir es que todos los contratos modificados han incrementado su presupuesto con esta modificación, pero si nos fijamos en los datos, observaremos que esto no es siempre así.")
 
 st.plotly_chart(px.histogram(mc, x="variaciò", title="Variación presupuesto de los contratos modificados"))
+
+st.write('Si observamos esta gráfica vemos que la mayor parte de los contratos modificados no han variado su importe o lo han hecho mínimamente. En cuanto a los valores más elevados, vemos que hay más reducciones de precio que aumento de los mismos. Vamos a revisar los totales:')
+
+col1, col2, col3 = st.columns(2)
+# contratos que han reducido su importe (variaciò < 0)
+col1.metric("Reducción de importe", mc[mc['variaciò'] < 0].count())
+col2.metric("Sin cambio de importe", mc[mc['variaciò'] == 0].count())
+col3.metric("Aumento de importe", mc[mc['variaciò'] > 0].count())
