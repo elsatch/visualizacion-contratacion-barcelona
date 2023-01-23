@@ -25,6 +25,7 @@ st.write('El Ayuntamiento de Barcelona está organzado internamente en una serie
 
 bcn_structure = df[["Tipo_entidad", "Nombre_entidad"]].drop_duplicates()
 
+# Instalamos streamlit_echarts con pip install streamlit_echarts
 # Ejemplo de Tree Chart inspirado en https://discuss.streamlit.io/t/unreadable-tree-charts-cannot-widen-the-canvas-size-in-streamlit/5600 con datos propios
 opts = {
     "tooltip": {"trigger": "item", "triggerOn": "mousemove"},
