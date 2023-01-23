@@ -9,7 +9,7 @@ from streamlit_echarts import st_echarts
 st.title("Contratación en Barcelona (2020-2021")
 st.subheader("Visualización de datos abiertos de contratación en Barcelona")
 
-df_file = "data/yearly_report_bcn_2020_2021.csv"
+df_file = "data/yearly_report_021.csv"
 
 @st.cache
 def load_data(file):
@@ -18,22 +18,23 @@ def load_data(file):
 
 df = load_data(df_file)
 
-st.write('Bienvenido a esta página, en la que podrás descubrir en detalle la contratación del Ayuntamiento de Barcelona, a partir de los de datos abiertos municipales. En concreto, vamos a explorar los datos correspondientes a los años 2021-2020, ya que los datos correspondientes a 2022 todavía no están disponibles.')
+st.write('Bienvenido a esta página, en la que podrás descubrir en detalle la contratación del Ayuntamiento de Barcelona, a partir de los de datos abiertos municipales. En concreto, vamos a explorar los datos correspondientes al años 2021, ya que los datos correspondientes a 2022 todavía no están disponibles.')
 
 st.subheader("¿Qué es la contratación pública?")
 st.write('La contratación pública es el conjunto de procedimientos que se llevan a cabo para la adquisición de bienes y servicios por parte de las administraciones públicas. En el caso de Barcelona, esta puede realizarse tanto desde el Ayuntamiento como desde una serie de organismos autónomos vinculados al Ayuntameiento')
 st.write('El Ayuntamiento de Barcelona está organzado internamente en una serie de gerencias y distritos. Las gerencias son áreas transversales, mientras que los distritos son áreas geográficas. En el siguiente gráfico, podemos ver la estructura de la organización')
 
+# Problemas encontrados al cargar los datos
 # Para no variar, dentro del propio fichero aparecen las entidades en mayúsculas y en minúsculas
 # Antes de construir el árbol, vamos a pasar todo a mayúsculas, aunque me gustaria retener el formato original
 
-df["Nombre_entidad"] = df["Nombre_entidad"].str.upper()
-df["Tipo_entidad"] = df["Tipo_entidad"].str.upper()
+# df["Nombre_entidad"] = df["Nombre_entidad"].str.upper()
+# df["Tipo_entidad"] = df["Tipo_entidad"].str.upper()
 
 # Para no variar, los nombres no coinciden entre los años, así que salen multitud de duplicados
-# Extraemos la estructura de entidades del Ayuntamiento de Barcelona del año 2020
+# Extraemos la estructura de entidades del Ayuntamiento de Barcelona del año 2021
 
-bcn_structure = df[df['año'] == 2020][['Tipo_entidad', 'Nombre_entidad']].drop_duplicates()
+bcn_structure = df[['Tipo_entidad', 'Nombre_entidad']].drop_duplicates()
 
 # Creamos una visualización tipo sunburst de plotly
 st.plotly_chart(px.sunburst(bcn_structure, path=['Tipo_entidad', 'Nombre_entidad'], title='Entidades del Ayuntamiento de Barcelona con capacidad de contratar'))
