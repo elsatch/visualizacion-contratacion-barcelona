@@ -31,52 +31,8 @@ df["Nombre_entidad"] = df["Nombre_entidad"].str.upper()
 df["Tipo_entidad"] = df["Tipo_entidad"].str.upper()
 bcn_structure = df[["Tipo_entidad", "Nombre_entidad"]].drop_duplicates()
 
-
-#bcn_structure = bcn_structure.groupby("Tipo_entidad").agg({"Nombre_entidad": "unique"}).reset_index()
-bcn_structure = bcn_structure.groupby("Tipo_entidad")
-tree_bcn_structure = {}
-for tipo_entidad, group in bcn_structure:
-    tree_bcn_structure[tipo_entidad] = group["Nombre_entidad"].tolist()
-
-json_bcn_structure = json.dumps(tree_bcn_structure)
-#json_bcn_structure = bcn_structure.to_json(orient="records")
-
-st.json(json_bcn_structure)
-
-# Instalamos streamlit_echarts con pip install streamlit_echarts
-# Ejemplo de Tree Chart inspirado en https://discuss.streamlit.io/t/unreadable-tree-charts-cannot-widen-the-canvas-size-in-streamlit/5600 con datos propios
-opts = {
-    "tooltip": {"trigger": "item", "triggerOn": "mousemove"},
-    "series": [
-        {
-            "type": "tree",
-            "data": [json_bcn_structure],
-            "top": "1%",
-            "left": "7%",
-            "bottom": "1%",
-            "right": "20%",
-            "symbolSize": 7,
-            "label": {
-                "position": "left",
-                "verticalAlign": "middle",
-                "align": "right",
-                "fontSize": 9,
-            },
-            "leaves": {
-                "label": {
-                    "position": "right",
-                    "verticalAlign": "middle",
-                    "align": "left",
-                }
-            },
-            "expandAndCollapse": True,
-            "animationDuration": 550,
-            "animationDurationUpdate": 750,
-        }
-    ],
-}
-
-st_echarts(opts, height=800)
+# Creamos una visualización tipo sunburst de plotly
+st.plotly_chart(px.sunburst(bcn_structure, path=['Tipo_entidad', 'Nombre_entidad'], title='Estructura del Ayuntamiento de Barcelona'))
 
 st.subheader("Contratos anuales del Ayuntamiento de Barcelona")
 
