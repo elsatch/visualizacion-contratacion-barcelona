@@ -14,7 +14,7 @@ def load_data(file):
 
 df = load_data(df_file)
 
-st.title("Tipos de procedimientos de contratos públicos")
+st.title("Procedimientos y tipos de procedimientos de contratos públicos")
 st.subheader("Visualización de datos abiertos de contratación en Barcelona")
 
 st.write("La administración pública dispone de múltiples mecanismos para contratar bienes y servicios. Idealmente, los contratos públicos deberían ser transparentes y accesibles para todo tipo de entidades. **Este tipo de contratos se denominan abiertos**, ya que están abiertos a que cualquier entidad, que cumpla las debidas garantías, pueda presentar una oferta para la adjudicación del contrato.")
