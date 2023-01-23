@@ -14,5 +14,10 @@ def load_data(file):
 
 df = load_data(df_file)
 
-st.title("Procedimientos y tipos de procedimientos de contratos públicos")
+st.title("Analisis extendido de contratistas del Ayuntamiento de Barcelona")
 st.subheader("Visualización de datos abiertos de contratación en Barcelona")
+
+st.write("En esta página vamos a ver poder explorar en mas detallos los datos de los contratistas del Ayuntamiento de Barcelona en 2021.")
+
+# Dibujamos un treemap con los datos de los contratistas extendidos
+st.plotly_chart(px.treemap(df, path=['tipus_contractes','nom_adjudicatari'], values='total_import_iva_inclos', color='total_import_iva_inclos', color_continuous_scale='RdBu', title='Analisis extendido de los contratistas por tipo de contrato e importe total'))
