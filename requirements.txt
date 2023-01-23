@@ -1,4 +1,5 @@
 streamlit_extras
+streamlit_echarts
 plotly_express
 pandas
 numpy
