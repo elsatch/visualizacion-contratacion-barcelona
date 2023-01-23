@@ -49,5 +49,3 @@ st.write("Vamos a verificar ahora si los mayores cambios de importes se correspo
 st.plotly_chart(px.histogram(mc, x="tipus_de_contracte_obres_serveis_subministraments", y="import_modificacio_sense_iva", title="Importe de las modificaciones por Tipos de contratos"))
 
 st.write("A diferencia de lo que habíamos asumido, los contatos de servicio son los que más modificaciones sufren y los que más importe tienen. Aún así, comprobamos que el importe total de la modificaciones es mínimo respecto al total")
-
-switch_page('Contratos menores')
