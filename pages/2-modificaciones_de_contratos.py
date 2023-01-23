@@ -29,7 +29,7 @@ st.plotly_chart(px.histogram(mc, x="variaciò", title="Variación presupuesto de
 
 st.write('Si observamos esta gráfica vemos que la mayor parte de los contratos modificados no han variado su importe o lo han hecho mínimamente. En cuanto a los valores más elevados, vemos que hay más reducciones de precio que aumento de los mismos. Vamos a revisar los totales:')
 
-col1, col2, col3 = st.columns(2)
+col1, col2, col3 = st.columns(3)
 # contratos que han reducido su importe (variaciò < 0)
 col1.metric("Reducción de importe", mc[mc['variaciò'] < 0].count())
 col2.metric("Sin cambio de importe", mc[mc['variaciò'] == 0].count())
