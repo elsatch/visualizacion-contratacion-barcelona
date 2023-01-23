@@ -24,7 +24,14 @@ st.subheader("¿Qué es la contratación pública?")
 st.write('La contratación pública es el conjunto de procedimientos que se llevan a cabo para la adquisición de bienes y servicios por parte de las administraciones públicas. En el caso de Barcelona, esta puede realizarse tanto desde el Ayuntamiento como desde una serie de organismos autónomos vinculados al Ayuntameiento')
 st.write('El Ayuntamiento de Barcelona está organzado internamente en una serie de gerencias y distritos. Las gerencias son áreas transversales, mientras que los distritos son áreas geográficas. En el siguiente gráfico, podemos ver la estructura de la organización')
 
+# Para no variar, dentro del propio fichero aparecen las entidades en mayúsculas y en minúsculas
+# Antes de construir el árbol, vamos a pasar todo a mayúsculas, aunque me gustaria retener el formato original
+
+df["Nombre_entidad"] = df["Nombre_entidad"].str.upper()
+df["Tipo_entidad"] = df["Tipo_entidad"].str.upper()
 bcn_structure = df[["Tipo_entidad", "Nombre_entidad"]].drop_duplicates()
+
+
 #bcn_structure = bcn_structure.groupby("Tipo_entidad").agg({"Nombre_entidad": "unique"}).reset_index()
 bcn_structure = bcn_structure.groupby("Tipo_entidad")
 tree_bcn_structure = {}
