@@ -33,10 +33,13 @@ st.write('En la siguiente gráfica vamos a ver el número de contratos realizado
 # fig = px.bar(df, x="Procedimiento", y="Número", color="Procedimiento", title="Número de contratos por procedimiento")
 
 #st.plotly_chart(px.bar(df, x="Procedimiento", y="Número", color="Procedimiento", title="Número de contratos por procedimiento"))
-st.plotly_chart(fig1, width=800, height=1024)
+st.plotly_chart(fig1, width=1280, height=1280)
 
 st.write('En la siguiente gráfica vamos a ver importe de los contratos realizados, agrupados por procedimiento')
-st.plotly_chart(px.bar(df, x="Procedimiento", y="Importe", color="Procedimiento", title="Número de contratos por tipo"))
+
+fig2 = px.bar(px.bar(df, x="Procedimiento", y="Importe", color="Procedimiento", title="Número de contratos por tipo"))
+fig2.update_layout(barmode='stack', xaxis={'categoryorder':'total descending', 'tickangle':-45})
+st.plotly_chart(fig2, width=1280, height=1280)
 
 st.write('Podemos comprobar que aunque el número de contratos menores es mayor, el importe de los contratos abiertos es mayor. Esto se debe a que los contratos menores tienen un importe limitado, mientras que los abiertos no.')
 
@@ -44,4 +47,6 @@ st.subheader("Tipos de contratos en el Ayuntamiento de Barcelona 2021")
 st.write('Otra forma importante de organizar los contratos tiene que ver con el tipo de contrato. Estos pueden ser de suministro, servicios o obras, etc.')
 st.write('A continuación vamos a ver cuales son los tipos de contrato que han gestionado mayor importe en el Ayuntamiento de Barcelona en 2021')
 
-st.plotly_chart(px.bar(df, x="Tipo de contrato", y="Importe", color="Tipo de contrato", title="Importe de contratos por tipo", text="Importe"))
+fig3 = px.bar(df, x="Tipo de contrato", y="Importe", color="Tipo de contrato", title="Importe de contratos por tipo", text="Importe")
+fig3.update_layout(barmode='stack', xaxis={'categoryorder':'total descending', 'tickangle':-45})
+st.plotly_chart(fig3, width=1280, height=1280)
