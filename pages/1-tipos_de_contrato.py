@@ -14,6 +14,7 @@ def load_data(file):
 
 df = load_data(df_file)
 
+fig = px.bar(df, x="Procedimiento", y="Número", color="Procedimiento", title="Número de contratos por procedimiento")
 fig.update_traces(texttemplate='%{text:.2s}', textposition='outside', textangle=45)
 
 st.title("Procedimientos y tipos de procedimientos de contratos públicos")
