@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 import json
 from streamlit_extras.switch_page_button import switch_page
-from streamlit_echarts import st_echarts
+# from streamlit_echarts import st_echarts
 
 st.title("Contratación en Barcelona (2021)")
 st.subheader("Visualización de datos abiertos de contratación en Barcelona")
